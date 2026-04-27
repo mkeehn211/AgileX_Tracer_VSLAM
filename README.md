@@ -123,6 +123,11 @@ source install/setup.bash
     
     ```
 * To run the RealSense Depth Camera
+    1. Install RealSense libraries
+    ```
+    sudo apt install -y librealsense2-dkms librealsense2-utils librealsense2-dev
+    ```
+    2. Launch RealSense publisher
     ```
     sudo modprobe uvcvideo
 
@@ -132,6 +137,12 @@ source install/setup.bash
         enable_accel:=false
     
     ```
+    3. Alternatively if you would like to just stream the camera and test the features use the RealSense GUI
+    ```
+    realsense-viewer
+    
+    ```
+    
     
 ### 4. Navigation stack and VSLAM
 
