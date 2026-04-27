@@ -96,10 +96,26 @@ source install/setup.bash
 ### 3. Running the sensors
 
 * To run the LiDAR (the nav2 package does this already)
+    1. Install Slidar
+    ```
+    sudo apt install -y ros-humble-sllidar-ros2
+    
+    ```
+    2. Add port permissions (if needed)
+    ```
+    sudo chmod 777 /dev/ttyUSB0
+
+    # Or permanently, add yourself to the dialout group:
+    sudo usermod -aG dialout $USER
+    # (log out and back in for this to take effect)
+    
+    ```
+    3. Run the Lidar
     ```
     ros2 run sllidar_ros2 sllidar_node
     
     ```
+    
 * To run the IMU
    1. Install pyserial
   
