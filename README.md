@@ -162,11 +162,33 @@ source install/setup.bash
     
 ### 4. Navigation stack and VSLAM
 
-* Launch the nav stack in a seperate terminal (the tracer base node, IMU, and RealSense should also be running)
+* Launch the Tracer Base Node
+    ```
+    sudo modprobe gs_usb
+    cd ~/ros2_ws/src/ugv_sdk/scripts/
+    bash bringup_can2usb_500k.bash
+    ros2 run tracer_base tracer_base_node
+    
+    ```
+* Launch the RealSense Camera
+    ```
+    ros2 launch realsense2_camera rs_launch.py \
+        align_depth.enable:=true \
+        enable_gyro:=false \
+        enable_accel:=false
+    ```
+    * Note: You can add/change parameters for the launch command to change the function of the camera
+* Launch the IMU
+    ```
+    ros2 launch wit_ros2_imu rviz_and_imu.launch.py
+    
+    ```
+* Launch the nav stack in a seperate terminal (Lidar included in launch)
     ```
     ros2 launch my_nav2_pkg bringup_launch.py
     
     ```
+    * Note: Make sure you here the motor of the Lidar start otherwise you might need to switch your usb port
 * Launch rtabmap
     ```
     ros2 launch rtabmap_launch rtabmap.launch.py \
