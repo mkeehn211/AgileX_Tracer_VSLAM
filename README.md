@@ -162,7 +162,7 @@ source install/setup.bash
     
 ### 4. Navigation stack and VSLAM
 
-* Launch the nav stack in a seperate terminal (the tracer base node should also be running)
+* Launch the nav stack in a seperate terminal (the tracer base node, IMU, and RealSense should also be running)
     ```
     ros2 launch my_nav2_pkg bringup_launch.py
     
